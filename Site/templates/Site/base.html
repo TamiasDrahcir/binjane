@@ -1,0 +1,259 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binjane</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #5CB5C7; /* Background color set to #5CB5C7 */
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index:1;
+            overflow: scroll;
+        }
+
+        h1 {
+            color: black; /* Text color set to black */
+            font-family: 'Playfair Display', serif; /* Elegant font */
+            font-size: 3rem;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            top: 5%; /* Set the top position to 5% of the screen height */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 10vh; /* Set the height to 10% of the screen height */
+        }
+
+        nav {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: -450px; /* Moved the navigation bar up by 450px */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 10px; /* Add more margin between the list items */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white; /* Text color set to black */
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        .white-rectangle {
+            position: relative;
+            top: -60px;
+            left: 0px;
+            width: 100%; /* Set the width to 100% of the screen width */
+            height: 22%;
+            background-color: #AAD8BA;
+            z-index: 2;
+            transition: background-color 0.5s; /* Smooth transition for hover effect */
+        }
+
+        nav ul li .white-rectangle{
+            width: 100%; /* Set the width to 100% of the screen width */
+            height: 100%;
+            text-align: center;
+            background-color: #5CB5C7;
+            color:white;
+        }
+
+        .label{
+            margin-right:5%;
+        }
+
+        .form-group {
+            position:relative;
+            margin-top:5%;
+            display: flex;
+            padding:5%;
+            flex-direction:row;
+            transform:translateY(75%);
+            
+        }
+        
+        nav ul li:hover .white-rectangle {
+          background-color: #AAD8BA;
+        }
+
+        .footer {
+            margin: 0px;
+            font-size: 10px;
+            position:fixed;
+            bottom:0%;
+            width:100%;
+            height: 5%;
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            z-index:2;    
+        }
+
+        .info-item{
+            margin:5px;
+            padding:5px;
+            width:90%;
+            text-align:center;
+            color:white
+        }
+
+        .heading{
+            position:absolute;
+            top:18%;
+            font-size:30px;
+            font-family: Segoe UI;
+            color:white;
+        }
+        
+        .topbar{
+            background-color: #AAD8BA;
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:15%;
+        }
+
+        .submit-btn {
+            background: #d6ecf0;
+            color: black;
+            border: none;
+            padding: 15px 15px;
+            font-size: 15px;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 15%;
+            width: 50%;
+            float:right;
+            transform:translateY(50%)
+        }
+
+        .submit-btn:hover {
+            background: #f2be45;
+            color:white;
+        }
+
+        .content{
+            position:absolute;
+            font-size:15px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            padding-left:20%;
+            padding-right:20%;
+            top: 64%;
+            line-height: 100%;
+            float:left;
+        }
+
+        textarea{
+            resize:none;
+            height:3em;
+        }
+
+        .footer {
+            margin: 0px;
+            font-size: 10px;
+            background-color:#3d3b4f;
+            position:fixed;
+            bottom:0%;
+            width:100%;
+            height: 12.5%;
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            }
+        
+        .info-item{
+            margin:10px;
+            padding:5px;
+            width:90%;
+            text-align:center;
+            color:white
+        }
+
+        .main-img{
+
+            /* padding:15px; */
+            padding:30px;
+            display:block;
+            width:60%;
+            margin-top: 20%;
+            margin-bottom:15%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="/site/home/"><img src="{% static 'binjaneicon.png' %}" height="120" style="position:absolute;left:10%"></a>
+        <h1>Binjane</h1>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <div class="white-rectangle">
+                    <a href="/site/about/">About Us</a>
+                </div>
+            </li>
+            <li>
+                <div class="white-rectangle">
+                    <a href="/site/service/">Our Services</a>
+                </div>
+            </li>
+            <li>
+                <div class="white-rectangle">
+                    <a href="/site/contact/">Contacts</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="footer">
+        <div class="info-item">
+            <div class="info-icon">📍</div>
+            <strong>Address</strong>
+            <p>No. 88 Kun-Cheng-Hu-Xi Road Changshu, Suzhou, Jiangsu Province, China</p >
+        </div>
+        
+        <div class="info-item">
+            <div class="info-icon">📞</div>
+            <strong>Phone</strong>
+            <p>+86 18118435242</p >
+        </div>
+        
+        <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <strong>Email</strong>
+            <p>hannah.061203@qq.com</p >
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
